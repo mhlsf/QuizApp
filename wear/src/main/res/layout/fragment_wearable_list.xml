@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.wearable.view.BoxInsetLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+                <TextView
+                    android:id="@+id/info"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textSize="@dimen/indicator_timer"
+                    android:fontFamily="@string/indicator_timer_font"
+                    android:gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:text="Swipe left to confirm"/>
+
+                <com.example.ms16402.QuizApp.WearableListViewFix
+                    android:id="@+id/wearable_list"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                </com.example.ms16402.QuizApp.WearableListViewFix>
+
+
+        </RelativeLayout>
+
+
+
+</android.support.wearable.view.BoxInsetLayout>

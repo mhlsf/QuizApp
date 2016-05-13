@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.wearable.view.CardScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <android.support.wearable.view.CardFrame
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif-light"
+                android:textColor="@color/GRAY"/>
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:text="Exemple de question ?"
+                android:fontFamily="sans-serif-light"
+                android:layout_height="wrap_content"
+                android:textSize="26sp"
+                android:textColor="@color/BLACK"/>
+
+            <TextView
+                android:id="@+id/question_precision"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="teet"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif-light"
+                android:textSize="16sp"
+                android:textColor="@color/BLACK"
+                android:layout_marginBottom="20dp"/>
+
+            <TextView
+                android:id="@+id/scale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/GRAY"/>
+
+            <TextView
+                android:id="@+id/info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_marginTop="20dp"
+                android:text="Swipe Left to Answer"
+                android:gravity="center"
+                android:textColor="@color/GRAY"/>
+
+
+        </LinearLayout>
+    </android.support.wearable.view.CardFrame>
+</android.support.wearable.view.CardScrollView>

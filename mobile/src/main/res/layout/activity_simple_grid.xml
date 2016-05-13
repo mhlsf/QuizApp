@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
+
+
+    <android.support.v7.widget.Toolbar android:id="@+id/toolbar_top"
+        android:layout_height="56dp"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        app:theme="@style/AppTheme"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v7.widget.Toolbar android:id="@+id/toolbar_bottom"
+        android:layout_height="56dp"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        app:theme="@style/AppTheme"
+
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        tools:context=".WearShareActivity">
+
+
+
+        <ImageView
+            android:id="@+id/icone_info"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:src="@drawable/ic_bluetooth_disabled_black_48dp"
+            android:alpha="0.5"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="20dp"
+            />
+
+        <TextView
+            android:id="@+id/info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Bluetooth is not enabled"/>
+
+        <View
+            android:id="@+id/separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"/>
+
+        <TextView
+            android:id="@+id/info_last_file"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Last File receive :"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:id="@+id/name_last_file"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Questions.db"
+            android:textSize="16pt"
+            android:textAlignment="center"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>
+

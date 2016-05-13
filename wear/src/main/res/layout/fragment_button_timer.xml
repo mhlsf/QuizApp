@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.wearable.view.BoxInsetLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <android.support.wearable.view.ActionPage
+
+            android:id="@+id/actionpage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/icone_save"
+            android:maxLines="1"
+            android:color="@color/blue"
+            app:buttonRippleColor="@color/blue"/>
+
+
+
+
+    </FrameLayout>
+
+
+
+
+
+
+</android.support.wearable.view.BoxInsetLayout>
+

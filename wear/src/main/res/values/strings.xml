@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">QuizApp</string>
+    <string name="hello_world">Hello World!</string>
+
+    <string name="confirmation_title">Are you sure ?</string>
+    <string name="confirmation_saving">Deleting...</string>
+
+    <string name="indicator_timer_font">sans-serif-light</string>
+
+
+</resources>
