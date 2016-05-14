@@ -24,7 +24,7 @@ public class GridPagerAdapterQuiz extends FragmentGridPagerAdapter {
         super(fm);
         mData = data;
 
-        light_dark_bg = new ColorDrawable(Color.argb(125, 0, 0, 0));
+        light_dark_bg = new ColorDrawable(Color.argb(200, 0, 0, 0));
         default_bg = new ColorDrawable(Color.TRANSPARENT);
 
     }

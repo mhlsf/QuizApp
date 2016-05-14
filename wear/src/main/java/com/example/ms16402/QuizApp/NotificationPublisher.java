@@ -24,7 +24,7 @@ public class NotificationPublisher extends BroadcastReceiver {
                 PendingIntent.getActivity(context, 0, viewIntent, 0);
 
         Bitmap background = BitmapFactory.decodeResource(context.getResources(),
-                R.drawable.background);
+                R.drawable.background3);
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(context)
                         .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark)
