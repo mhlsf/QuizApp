@@ -39,7 +39,7 @@ public class TimeSelectionFragment extends Fragment {
 
     AlphaAnimation animation1;
 
-    public static final TimeSelectionFragment newInstance(int h, int m, String[] h_list, String[] m_list){
+    public static TimeSelectionFragment newInstance(int h, int m, String[] h_list, String[] m_list){
         TimeSelectionFragment fragment = new TimeSelectionFragment();
         Bundle args = new Bundle();
         args.putInt(KEY_HOUR, h);

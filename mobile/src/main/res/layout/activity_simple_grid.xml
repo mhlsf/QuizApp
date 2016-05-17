@@ -1,32 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    android:layout_height="match_parent"
+<LinearLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-
-    <android.support.v7.widget.Toolbar android:id="@+id/toolbar_top"
-        android:layout_height="56dp"
-        android:layout_width="match_parent"
-        android:background="@color/colorPrimary"
-        app:theme="@style/AppTheme"
+    <android.support.design.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    </android.support.v7.widget.Toolbar>
-
-    <android.support.v7.widget.Toolbar android:id="@+id/toolbar_bottom"
-        android:layout_height="56dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:background="@color/colorPrimary"
-        app:theme="@style/AppTheme"
+        android:layout_height="wrap_content">
 
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </android.support.v7.widget.Toolbar>
+            <android.support.v7.widget.Toolbar android:id="@+id/toolbar_top"
+                android:layout_height="56dp"
+                android:layout_width="match_parent"
+                android:background="@color/colorPrimary"
+                app:theme="@style/AppTheme"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto">
+
+            </android.support.v7.widget.Toolbar>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar_bottom"
+                android:layout_height="56dp"
+                android:layout_width="match_parent"
+                android:background="@color/colorPrimary"
+                app:theme="@style/AppTheme"
+
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto">
+            </android.support.v7.widget.Toolbar>
+
+        </LinearLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            app:layout_anchor="@id/toolbar_top"
+            android:id="@+id/button_mail"
+            android:src="@drawable/ic_email_white_48dp"
+            app:fabSize="normal"
+            android:layout_marginRight="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_anchorGravity="bottom|right|end"/>
+
+    </android.support.design.widget.CoordinatorLayout>
+
 
 
     <LinearLayout
@@ -49,7 +75,7 @@
             android:layout_width="match_parent"
             android:src="@drawable/ic_bluetooth_disabled_black_48dp"
             android:alpha="0.5"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="50dp"
             android:layout_marginBottom="20dp"
             />
 

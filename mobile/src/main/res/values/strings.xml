@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Wear Share</string>
+
+    <string name="dialog_message_nolastfile">You don\'t have recent receive file, do you wish to select one on the phone ?</string>
+    <string name="dialog_title_nolastfile">No last file</string>
+    <string name="ok">OK</string>
+    <string name="cancel">cancel</string>
+
+    <string name="dialog_message">Do you wish to send last receive file or another file on the phone ?</string>
+    <string name="dialog_title">Send file</string>
+    <string name="send_last_file">Send last file</string>
+    <string name="choose_file_on_sdcard">Choose file</string>
+
+
 </resources>

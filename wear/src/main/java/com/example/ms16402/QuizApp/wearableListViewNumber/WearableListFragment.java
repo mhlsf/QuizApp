@@ -26,7 +26,7 @@ public class WearableListFragment extends Fragment {
     TextView info_textView;
     String actual_number;
 
-    public static final WearableListFragment newInstance(int numberOfElement)
+    public static WearableListFragment newInstance(int numberOfElement)
     {
         WearableListFragment fragment = new WearableListFragment();
         Bundle args = new Bundle();

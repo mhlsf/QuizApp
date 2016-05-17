@@ -5,6 +5,7 @@ import android.app.ActivityManager;
 import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.media.MediaScannerConnection;
@@ -13,8 +14,11 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -54,6 +58,8 @@ public class WearShareActivity extends AppCompatActivity {
 
     Animation fadeiInAnimationObject;
 
+    final static String PATH_DEFAULT_FOLDER = Environment.getExternalStorageDirectory() + "/University of Bristol/";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +67,17 @@ public class WearShareActivity extends AppCompatActivity {
         Toolbar toolBar = (Toolbar)findViewById(R.id.toolbar_top);
         setSupportActionBar(toolBar);
         getSupportActionBar().setTitle(R.string.app_name);
+
+
+        FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.button_mail);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseFileForMail();
+            }
+        });
+
+
         googleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(Wearable.API)
                 .build();
@@ -90,7 +107,92 @@ public class WearShareActivity extends AppCompatActivity {
             }
         }, delay);
         checkState();
+
+
     }
+
+
+
+    public void chooseFileForMail(){
+
+
+        if (fileName == null)
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.myDialog));
+            builder.setMessage(R.string.dialog_message_nolastfile)
+                    .setTitle(R.string.dialog_title_nolastfile);
+
+            // Add the buttons
+            builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+
+                    new FileChooser(WearShareActivity.this).setFileListener(new FileChooser.FileSelectedListener() {
+                        @Override
+                        public void fileSelected(final File file) {
+                            sendMail(file.getAbsolutePath());
+                        }
+                    }).showDialog();
+                }
+
+            });
+
+            builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // User cancelled the dialog
+                }
+            });
+            // Set other dialog properties
+            // Create the AlertDialog
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }else
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.myDialog));
+            builder.setMessage(R.string.dialog_message)
+                    .setTitle(R.string.dialog_title);
+
+            // Add the buttons
+            builder.setPositiveButton(R.string.send_last_file, new DialogInterface.OnClickListener() {
+
+                public void onClick(DialogInterface dialog, int id) {
+                    sendMail(PATH_DEFAULT_FOLDER + fileName);
+                }
+            });
+
+            builder.setNeutralButton(R.string.choose_file_on_sdcard, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    new FileChooser(WearShareActivity.this).setFileListener(new FileChooser.FileSelectedListener() {
+                        @Override
+                        public void fileSelected(final File file) {
+                            sendMail(file.getAbsolutePath());
+                        }
+                    }).showDialog();
+                }
+            });
+            // Set other dialog properties
+            // Create the AlertDialog
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+    }
+
+    public void sendMail(String fileandpath){
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setType("text/plain");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"mahel.sif@gmail.com"});
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Data QuizApp.db");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "test");
+        File file = new File(fileandpath);
+        if (!file.exists() || !file.canRead()) {
+            Log.d("fileproeble", "");
+            return;
+        }
+        Uri uri = Uri.fromFile(file);
+        emailIntent.putExtra(Intent.EXTRA_STREAM, uri);
+        startActivity(Intent.createChooser(emailIntent, "Pick an Email provider"));
+    }
+
+
 
     //When bluetooth is connected, check if device is connected and display the name
     public void checkIfWearableConnected() {
@@ -193,19 +295,25 @@ public class WearShareActivity extends AppCompatActivity {
 
         Wearable.ChannelApi.addListener(googleApiClient, channelListener);
         Wearable.MessageApi.addListener(googleApiClient, messageListener);
-
-        registerReceiver(mReceiver, new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED));
+        
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        registerReceiver(mReceiver, new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED));
         checkState();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        try {
+            unregisterReceiver(mReceiver);
+        }catch (IllegalArgumentException e)
+        {
+
+        }
     }
 
     @Override
@@ -233,7 +341,7 @@ public class WearShareActivity extends AppCompatActivity {
             if (channel.getPath().equals("/mypath")) {
 
                 //Here you can change the destination folder
-                file = new File(Environment.getExternalStorageDirectory() + "/University of Bristol/", fileName);
+                file = new File(PATH_DEFAULT_FOLDER, fileName);
                 file.getParentFile().mkdirs();
                 try {
                     file.createNewFile();
