@@ -71,7 +71,6 @@ public class QuizActivity extends FragmentActivity implements ButtonFragment.OnC
 
 
     public GridPagerAdapterQuiz gridPagerAdapterQuiz;
-    SharedPreferences preferences;
     int currentRow;
 
     private GridViewPager mViewPager;

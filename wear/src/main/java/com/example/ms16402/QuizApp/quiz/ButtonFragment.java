@@ -31,14 +31,14 @@ public class ButtonFragment extends Fragment {
     int colorButton = -1;
     ProgressBar spinner;
 
-    public static final ButtonFragment newInstance(String id, String p, String t, int i)
+    public static final ButtonFragment newInstance(String id, String parent, String text, int icon)
     {
         ButtonFragment fragment = new ButtonFragment();
         Bundle args = new Bundle();
         args.putString(KEY_ID, id);
-        args.putString(KEY_PARENT_TAG, p);
-        args.putString(KEY_TEXT, t);
-        args.putInt(KEY_ICON_ID, i);
+        args.putString(KEY_PARENT_TAG, parent);
+        args.putString(KEY_TEXT, text);
+        args.putInt(KEY_ICON_ID, icon);
         fragment.setArguments(args);
         return  fragment;
     }
@@ -86,7 +86,7 @@ public class ButtonFragment extends Fragment {
     public void loadingStop()
     {
         spinner.setVisibility(View.INVISIBLE);
-        actionPage.setImageResource(R.drawable.icone_save);
+        actionPage.setImageResource(imageId);
         actionPage.setText(text);
         actionPage.setOnClickListener(onClickListener);
     }

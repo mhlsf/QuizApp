@@ -131,7 +131,9 @@ public class MenuActivity extends Activity implements WearableListView.ClickList
             }
         }
         else if (menu6 == wearableListMenuAdapter.getDataSet().get(viewHolder.getAdapterPosition()).getMain()) {
-            DelayedConfirmationFragment delayedConfirmationFragment = DelayedConfirmationFragment.newInstance("deleting_database","Are you sure ?", "Deleting Database...", "Deleting...", 10000);
+            DelayedConfirmationFragment delayedConfirmationFragment =
+                    DelayedConfirmationFragment.newInstance("deleting_database","Are you sure ?",
+                            "Deleting Database...", "Deleting...", 10000);
             DelayedConfirmationFragment.OnDataPass dataPass = new DelayedConfirmationFragment.OnDataPass() {
                 @Override
                 public void onDataPass(String id) {
@@ -144,23 +146,30 @@ public class MenuActivity extends Activity implements WearableListView.ClickList
             FragmentTransaction ft = getFragmentManager().beginTransaction();
             ft.add(android.R.id.content, delayedConfirmationFragment).commit();
         }
-        else if(menu3 == wearableListMenuAdapter.getDataSet().get(viewHolder.getAdapterPosition()).getMain())
+        else if(menu3 ==
+                wearableListMenuAdapter.getDataSet().get(viewHolder.getAdapterPosition()).getMain())
         {
             FragmentTransaction ft = getFragmentManager().beginTransaction();
-            GridIntervalSelectionFragment gridIntervalSelectionFragment = GridIntervalSelectionFragment.newInstance();
+            GridIntervalSelectionFragment gridIntervalSelectionFragment =
+                    GridIntervalSelectionFragment.newInstance();
             gridIntervalSelectionFragment.setEnterTransition(new Slide(Gravity.RIGHT));
             gridIntervalSelectionFragment.setExitTransition(new Fade(Fade.OUT));
-            ft.add(android.R.id.content, gridIntervalSelectionFragment, "gridIntervalSelectionFragment").commit();
+            ft.add(android.R.id.content, gridIntervalSelectionFragment,
+                    "gridIntervalSelectionFragment").commit();
         }
-        else if(menu2 == wearableListMenuAdapter.getDataSet().get(viewHolder.getAdapterPosition()).getMain())
+        else if(menu2 ==
+                wearableListMenuAdapter.getDataSet().get(viewHolder.getAdapterPosition()).getMain())
         {
             FragmentTransaction ft = getFragmentManager().beginTransaction();
-            GridMedicationTimeSelectionFragment gridMedicationTimeSelection = GridMedicationTimeSelectionFragment.newInstance();
+            GridMedicationTimeSelectionFragment gridMedicationTimeSelection =
+                    GridMedicationTimeSelectionFragment.newInstance();
             gridMedicationTimeSelection.setEnterTransition(new Slide(Gravity.RIGHT));
             gridMedicationTimeSelection.setExitTransition(new Fade(Fade.OUT));
-            ft.add(android.R.id.content, gridMedicationTimeSelection, "gridMedicationTimeSelection").commit();
+            ft.add(android.R.id.content, gridMedicationTimeSelection,
+                    "gridMedicationTimeSelection").commit();
         }
-        else if(menu_separator == wearableListMenuAdapter.getDataSet().get(viewHolder.getAdapterPosition()).getMain())
+        else if(menu_separator ==
+                wearableListMenuAdapter.getDataSet().get(viewHolder.getAdapterPosition()).getMain())
         {
             counterClickForDeveloper++;
             if (counterClickForDeveloper > numberClickForDeveloper)

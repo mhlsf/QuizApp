@@ -27,7 +27,7 @@ public class NotificationPublisher extends BroadcastReceiver {
                 R.drawable.background3);
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(context)
-                        .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark)
+                        .setSmallIcon(R.mipmap.ic_launcher)
                         .setContentTitle("Question Time !")
                         .setContentText("Swipe left to open")
                         .extend(new NotificationCompat.WearableExtender().setBackground(background))
