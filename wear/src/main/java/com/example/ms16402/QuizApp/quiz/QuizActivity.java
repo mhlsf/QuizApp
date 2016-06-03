@@ -30,6 +30,7 @@ import com.example.ms16402.QuizApp.db_files.DB_Helper;
 import com.example.ms16402.QuizApp.db_files.DB_Variables;
 import com.example.ms16402.QuizApp.menu.MenuActivity;
 import com.example.ms16402.QuizApp.SoundMeter;
+import com.example.ms16402.QuizApp.wearableListViewNumber.WearableListFragment;
 import com.example.ms16402.gridproject.R;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
@@ -104,8 +105,8 @@ public class QuizActivity extends FragmentActivity implements ButtonFragment.OnC
         retrieveBluetoothDevices();
 
         //Starting to record the sound
-        //soundmeter = new SoundMeter();
-        //soundmeter.start();
+        soundmeter = new SoundMeter();
+        soundmeter.start();
 
         //Starting the record the light level
         setLightLevel();
@@ -116,7 +117,7 @@ public class QuizActivity extends FragmentActivity implements ButtonFragment.OnC
         super.onResume();
         mGoogleApiClient.connect();
         sensorManager.registerListener(sensorEventListener, lightSensor, SensorManager.SENSOR_DELAY_FASTEST);
-       //soundmeter.start();
+       soundmeter.start();
     }
 
     @Override
@@ -127,7 +128,7 @@ public class QuizActivity extends FragmentActivity implements ButtonFragment.OnC
                     .removeLocationUpdates(mGoogleApiClient, this);
         }
         mGoogleApiClient.disconnect();
-        //soundmeter.stop();
+        soundmeter.stop();
         sensorManager.unregisterListener(sensorEventListener, lightSensor);
         if (bluetoothAdapter != null)
         {
@@ -181,7 +182,7 @@ public class QuizActivity extends FragmentActivity implements ButtonFragment.OnC
     {
         if (soundLevel == 0)
         {
-            soundLevel = soundmeter.getdB();
+            soundLevel = soundmeter.getAmplitude();
         }
     }
 
@@ -257,7 +258,15 @@ public class QuizActivity extends FragmentActivity implements ButtonFragment.OnC
 
     @Override
     public void OnClick(String id) {
-        new RecordInBase(gridPagerAdapterQuiz.getQuestionRow(currentRow).getWearableListFragment().getActual_number(), currentRow).execute();
+        int i = gridPagerAdapterQuiz.getQuestionRow(currentRow).getScale();
+        String answer;
+        if (i == -1)
+        {
+            answer = ((YesAndNoFragment) gridPagerAdapterQuiz.getQuestionRow(currentRow).getAnswerFragment()).getAnswer();
+        }else {
+            answer = ((WearableListFragment) gridPagerAdapterQuiz.getQuestionRow(currentRow).getAnswerFragment()).getActual_number();
+        }
+        new RecordInBase(answer, currentRow).execute();
     }
 
     /*******************Position*******************/
@@ -368,7 +377,7 @@ public class QuizActivity extends FragmentActivity implements ButtonFragment.OnC
         @Override
         protected String doInBackground(String... arg0) {
 
-            //setSoundLevel();
+            setSoundLevel();
 
             mDbHelper = new DB_Helper(getBaseContext());
             SQLiteDatabase db = mDbHelper.getWritableDatabase();
@@ -418,7 +427,7 @@ public class QuizActivity extends FragmentActivity implements ButtonFragment.OnC
             newRowId = db.insert(DB_Variables.Answer.TABLE_NAME, null, values);
             db.close();
 
-            //soundmeter.stop();
+            soundmeter.stop();
 
             return null;
         }

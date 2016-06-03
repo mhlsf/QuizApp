@@ -99,7 +99,6 @@ public class MenuActivity extends Activity implements WearableListView.ClickList
     @Override
     public void onClick(WearableListView.ViewHolder viewHolder) {
         if (menu1 == wearableListMenuAdapter.getDataSet().get(viewHolder.getAdapterPosition()).getMain()) {
-
             Intent intent = new Intent(this, QuizActivity.class);
             startActivity(intent);
         }

@@ -26,7 +26,6 @@ public class GridPagerAdapterQuiz extends FragmentGridPagerAdapter {
 
         light_dark_bg = new ColorDrawable(Color.argb(200, 0, 0, 0));
         default_bg = new ColorDrawable(Color.TRANSPARENT);
-
     }
 
     @Override
@@ -43,7 +42,7 @@ public class GridPagerAdapterQuiz extends FragmentGridPagerAdapter {
 
         if (column == 1)
         {
-            return mData.get(row).getWearableListFragment();
+            return mData.get(row).getAnswerFragment();
         }
 
         if (column == 2)

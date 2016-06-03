@@ -27,7 +27,8 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>        </activity>
+            </intent-filter>
+        </activity>
 
         <activity android:name="com.example.ms16402.QuizApp.quiz.QuizActivity"/>
         <activity android:name="com.example.ms16402.QuizApp.SyncDataWithPhoneActivity"/>

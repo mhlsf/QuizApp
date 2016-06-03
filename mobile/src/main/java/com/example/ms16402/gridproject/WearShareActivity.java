@@ -179,12 +179,11 @@ public class WearShareActivity extends AppCompatActivity {
     public void sendMail(String fileandpath){
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setType("text/plain");
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"mahel.sif@gmail.com"});
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Data QuizApp.db");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "test");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"example@gmail.com"});
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Database File");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Here the database file");
         File file = new File(fileandpath);
         if (!file.exists() || !file.canRead()) {
-            Log.d("fileproeble", "");
             return;
         }
         Uri uri = Uri.fromFile(file);

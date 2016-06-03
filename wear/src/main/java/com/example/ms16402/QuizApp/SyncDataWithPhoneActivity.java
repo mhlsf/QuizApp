@@ -26,6 +26,9 @@ import com.google.android.gms.wearable.Wearable;
 import com.google.android.gms.wearable.WearableStatusCodes;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by ms16402 on 27/04/2016.
@@ -99,7 +102,6 @@ public class SyncDataWithPhoneActivity extends Activity {
                 @Override
                 public void onResult(ChannelApi.OpenChannelResult result) {
                     Channel channel = result.getChannel();
-                    Log.d("external sotrage", Environment.getExternalStorageDirectory().toString());
 
                     File file = new File(Environment.getExternalStorageDirectory(), NAME_FILE);
 
@@ -122,7 +124,14 @@ public class SyncDataWithPhoneActivity extends Activity {
                         mNode = result.getNodes().get(i);
                         Log.d("node", result.getNodes().toString());
 
-                        String fileName = NAME_FILE;
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+                        String currentDateandTime = sdf.format(new Date());
+
+                        String path = NAME_FILE;
+                        // Split path into segments
+                        String segments[] = path.split("\\.");
+
+                        String fileName = segments[0] + "_" +  currentDateandTime +  "." + segments[1];
                         Wearable.MessageApi.sendMessage(googleApiClient, mNode.getId(),
                                 "/mypath", fileName.getBytes());
                     }

@@ -64,12 +64,20 @@ public class QuestionCardFragment extends Fragment {
             if(args.containsKey(KEY_SCALE)) {
                 TextView scaleview = (TextView) view.findViewById(R.id.scale);
                 if(scaleview != null) {
-                    String tmp = "On a scale from 1 to " + Integer.toString(scale);
+                    String tmp;
+                    if (scale == -1)
+                    {
+                        tmp = "Answer with Yes or No";
+                    }else
+                    {
+                        tmp = "On a scale from 1 to " + Integer.toString(scale);
+                    }
                     scaleview.setText(tmp);
                 }
             }
 
             if(args.containsKey(KEY_INFO)) {
+
                 TextView precisionQuestion = (TextView) view.findViewById(R.id.question_precision);
                 if(precisionQuestion != null) {
                     precisionQuestion.setText(contentPrecision_text);

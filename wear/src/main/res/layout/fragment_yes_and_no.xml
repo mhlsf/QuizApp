@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="2">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_height="wrap_content"
+                android:text="Select Yes or No" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:fontFamily="sans-serif-light"
+                android:text="Then Swipe to left" />
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:weightSum="2"
+        android:clipChildren="false">
+
+        <RelativeLayout
+            android:id="@+id/surface_left"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:clipChildren="false">
+
+            <TextView
+                android:id="@+id/button_left"
+                android:text="No"
+                android:textColor="@color/button_text"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                android:background="@drawable/button_reflex"
+                android:layout_height="60dp"
+                android:layout_width="60dp">
+
+            </TextView>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/surface_right"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:clipChildren="false">
+
+                <TextView
+                    android:id="@+id/button_right"
+                    android:text="Yes"
+                    android:textSize="20sp"
+                    android:textColor="@color/button_text"
+                    android:gravity="center"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/button_reflex"
+                    android:layout_height="60dp"
+                    android:layout_width="60dp">
+
+                </TextView>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

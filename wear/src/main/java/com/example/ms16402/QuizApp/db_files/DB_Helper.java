@@ -40,7 +40,6 @@ public class DB_Helper extends SQLiteOpenHelper {
 
     public DB_Helper(Context context){
         super(context, Environment.getExternalStorageDirectory()+ "/" + DB_Variables.DATABASE_NAME, null, DATABASE_VERSION);
-        Log.d("envirome;emnt", Environment.getExternalStorageDirectory().toString());
     }
 
     @Override

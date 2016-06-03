@@ -1,5 +1,7 @@
 package com.example.ms16402.QuizApp.quiz;
 
+import android.app.Fragment;
+
 import com.example.ms16402.QuizApp.wearableListViewNumber.WearableListFragment;
 import com.example.ms16402.gridproject.R;
 
@@ -9,20 +11,27 @@ import com.example.ms16402.gridproject.R;
 public class QuestionRow {
 
     QuestionCardFragment questionCardFragment;
-    WearableListFragment wearableListFragment;
+    Fragment answerFragment;
     ButtonFragment buttonFragment;
 
     public String question;
     public int id;
+    public int scale;
 
     public QuestionRow(int id, String s, String d, int i)
     {
         questionCardFragment = QuestionCardFragment.newInstance("Question :", s, d, i);
-        wearableListFragment = WearableListFragment.newInstance(i+1);
+        if (i == -1)
+        {
+            answerFragment = YesAndNoFragment.newInstance("button_question_"+Integer.toString(id), "Test");
+        }else {
+            answerFragment = WearableListFragment.newInstance(i+1);
+        }
         buttonFragment = ButtonFragment.newInstance("button_question_"+Integer.toString(id), null, "Confirm ?", R.drawable.icone_save);
 
         question = s;
         this.id = id;
+        this.scale= i;
     }
 
     public QuestionCardFragment getQuestionCardFragment()
@@ -30,9 +39,14 @@ public class QuestionRow {
         return questionCardFragment;
     }
 
-    public WearableListFragment getWearableListFragment()
+    public int getScale() {
+        return scale;
+    }
+
+    public Fragment getAnswerFragment()
     {
-        return wearableListFragment;
+
+        return answerFragment;
     }
 
     public ButtonFragment getButtonFragment()
